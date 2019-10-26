@@ -1,14 +1,17 @@
 
 <h1>《后端架构师技术图谱》</h1>
 
-![阿里巴巴集团长期内推，欢迎自荐，xingshaocheng@gmail.com](https://cdns.coderxing.com/HrUJ4G3E.png_700x700)
+
+
+<b style="color:red">推荐:</b> [《Java技术书籍大全》 - awesome-java-books](https://github.com/sorenduan/awesome-java-books)
+<p>从初级开发者到资深架构师，看这些书就够了</p>
+<hr/>
 
 [![知识共享协议（CC协议）](https://img.shields.io/badge/License-Creative%20Commons-DC3D24.svg)](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)
 [![GitHub stars](https://img.shields.io/github/stars/xingshaocheng/architect-awesome.svg?style=flat&label=Star)](https://github.com/xingshaocheng/architect-awesome/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/xingshaocheng/architect-awesome.svg?style=flat&label=Fork)](https://github.com/xingshaocheng/architect-awesome/fork)
 [![GitHub watchers](https://img.shields.io/github/watchers/xingshaocheng/architect-awesome.svg?style=flat&label=Watch)](https://github.com/xingshaocheng/architect-awesome/watchers)
-
-**更新于20180624**
+[![GitHub followers](https://img.shields.io/github/followers/xingshaocheng.svg?label=%E5%85%B3%E6%B3%A8)](https://github.com/xingshaocheng)
 
 
 * [数据结构](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#数据结构)
@@ -23,7 +26,7 @@
 		* [平衡二叉树](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#平衡二叉树)
 		* [二叉查找树（BST）](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#二叉查找树bst)
 		* [红黑树](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#红黑树)
-		* [B-，B+，B*树](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#b-bb树)
+		* [B，B+，B*树](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#b-bb树)
 		* [LSM 树](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#lsm-树)
 	* [BitSet](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#bitset)
 * [常用算法](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#常用算法)
@@ -179,7 +182,7 @@
 		* [Protobuf](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#protobuf)
 * [数据库](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#数据库)
 	* [基础理论](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#基础理论)
-		* [数据库设计的三大范式](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#数据库设计的三大范式)
+		* [关系数据库设计的三大范式](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#关系数据库设计的三大范式)
 	* [MySQL](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#mysql)
 		* [原理](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#原理)
 		* [InnoDB](https://github.com/xingshaocheng/architect-awesome/blob/master/README.md#innodb)
@@ -406,19 +409,19 @@
 	* 添加阶段后，左旋或者右旋从而再次达到平衡。 
 * [《浅谈算法和数据结构: 九 平衡查找树之红黑树》](http://www.cnblogs.com/yangecnu/p/Introduce-Red-Black-Tree.html)
 
-### B-，B+，B*树
+### B，B+，B*树
 MySQL是基于B+树聚集索引组织表
 
 * [《B-树，B+树，B\*树详解》](https://blog.csdn.net/aqzwss/article/details/53074186)
 * [《B-树，B+树与B\*树的优缺点比较》](https://blog.csdn.net/bigtree_3721/article/details/73632405)
-	* B+ 树的叶子节点链表结构相比于 B- 树便于扫库，和范围检索。
+	* B+树的叶子节点链表结构相比于 B-树便于扫库，和范围检索。
 ### LSM 树
 
-LSM（Log-Structured Merge-Trees）和 B+ 树相比，是牺牲了部分读的性能来换取写的性能(通过批量写入)，实现读写之间的。
+LSM（Log-Structured Merge-Trees）和 B+ 树相比，是牺牲了部分读的性能来换取写的性能(通过批量写入)，实现读写之间的平衡。
 Hbase、LevelDB、Tair（Long DB）、nessDB 采用 LSM 树的结构。LSM可以快速建立索引。
 
 * [《LSM树 VS B+树》](https://blog.csdn.net/dbanote/article/details/8897599)
-	* B+ 树读性能好，但由于需要有序结构，当key比较分散时，磁盘寻道频繁，造成写性能。
+	* B+ 树读性能好，但由于需要有序结构，当key比较分散时，磁盘寻道频繁，造成写性能较差。
 	* LSM 是将一个大树拆分成N棵小树，先写到内存（无寻道问题，性能高），在内存中构建一颗有序小树（有序树），随着小树越来越大，内存的小树会flush到磁盘上。当读时，由于不知道数据在哪棵小树上，因此必须遍历（二分查找）所有的小树，但在每颗小树内部数据是有序的。
 	
 * [《LSM树（Log-Structured Merge Tree）存储引擎》](https://blog.csdn.net/u014774781/article/details/52105708)
@@ -455,7 +458,7 @@ Hbase、LevelDB、Tair（Long DB）、nessDB 采用 LSM 树的结构。LSM可以
 
 ### 快速排序
 * [《坐在马桶上看算法：快速排序》](http://developer.51cto.com/art/201403/430986.htm)
-	* 一侧比另外一次都大或小。 
+	* 一侧比另外一侧都大或小。 
 ### 归并排序
 * [《图解排序算法(四)之归并排序》](http://www.cnblogs.com/chengxiao/p/6194356.html)
 	* 分而治之，分成小份排序，在合并(重建一个新空间进行复制)。 
@@ -589,7 +592,7 @@ KMP：Knuth-Morris-Pratt算法（简称KMP）
 	* 幻读的例子非常清楚。
 	* 通过 SELECT ... FOR UPDATE 解决。
 	
-* [《一篇文章带你读懂MySQL和InnoDB》](http://database.51cto.com/art/201804/570101.htm)
+* [《一篇文章带你读懂MySQL和InnoDB》](https://draveness.me/mysql-innodb)
 	* 图解脏读、不可重复读、幻读问题。
 
 
@@ -875,7 +878,7 @@ APM —  Application Performance Management
 * [《APP埋点常用的统计工具、埋点目标和埋点内容》](http://www.25xt.com/company/17066.html)
 	* 第三方统计：友盟、百度移动、魔方、App Annie、talking data、神策数据等。
 
-* [《美团点评前端无痕埋点实践》](https://tech.meituan.com/mt-mobile-analytics-practice.html)
+* [《美团点评前端无痕埋点实践》](https://tech.meituan.com/mt_mobile_analytics_practice.html)
 	* 所谓无痕、即通过可视化工具配置采集节点，在前端自动解析配置并上报埋点数据，而非硬编码。 
 
 
@@ -1231,6 +1234,7 @@ TODO
 ### Sharding Jdbc
 
 * [官网](http://shardingjdbc.io/)
+* [源码解析](http://www.iocoder.cn/categories/Sharding-JDBC/?vip&architect-awesome)
 
 ## 日志系统
 
@@ -1359,7 +1363,7 @@ Goolge出品、占用空间和效率完胜其他序列化类库，如Hessian；�
 
 # 数据库
 ## 基础理论
-### 数据库设计的三大范式
+### 关系数据库设计的三大范式
 * [《数据库的三大范式以及五大约束》](https://www.cnblogs.com/waj6511988/p/7027127.html)
 	* 第一范式：数据表中的每一列（每个字段）必须是不可拆分的最小单元，也就是确保每一列的原子性；
 	* 第二范式（2NF）：满足1NF后，要求表中的所有列，都必须依赖于主键，而不能有任何一列与主键没有关系，也就是说一个表只描述一件事情；
@@ -1403,7 +1407,12 @@ MyISAM 是非聚集，InnoDB 是聚集
 #### 复合索引
 
 * [《复合索引的优点和注意事项》](https://www.cnblogs.com/summer0space/p/7247778.html)
-
+	* 文中有一处错误：
+	> 对于复合索引,在查询使用时,最好将条件顺序按找索引的顺序,这样效率最高; select * from table1 where col1=A AND col2=B AND col3=D 如果使用 where col2=B AND col1=A 或者 where col2=B 将不会使用索引
+	* 原文中提到索引是按照“col1，col2，col3”的顺序创建的，而mysql在按照最左前缀的索引匹配原则，且会自动优化 where 条件的顺序，当条件中只有 col2=B AND col1=A 时，会自动转化为 col1=A AND col2=B，所以依然会使用索引。
+	
+* [《MySQL查询where条件的顺序对查询效率的影响》](https://www.cnblogs.com/acode/p/7489258.html)
+	
 #### 自适应哈希索引(AHI)
 
 * [《InnoDB存储引擎——自适应哈希索引》](https://blog.csdn.net/Linux_ever/article/details/62043708)
@@ -1525,6 +1534,7 @@ MyISAM 是非聚集，InnoDB 是聚集
 
 ## Spark
 * [《Spark(一): 基本架构及原理》](http://www.cnblogs.com/tgzhu/p/5818374.html)
+* [《子雨大数据之Spark入门教程(Python版)》](http://dblab.xmu.edu.cn/blog/1709-2/)
 
 
 # 安全
@@ -1870,7 +1880,7 @@ Java、Spring、Dubbo 优雅关闭方式。
 * [《分布式服务框架学习笔记4 服务路由》](https://blog.csdn.net/xundh/article/details/59492750)
 	* 原则：透明化路由
 	* 负载均衡策略：随机、轮询、服务调用延迟、一致性哈希、粘滞连接
-	* 本地路由有限策略：injvm(优先调用jvm内部的服务)，innative(优先使用相同物理机的服务),原则上找距离最近的服务。
+	* 本地路由优先策略：injvm(优先调用jvm内部的服务)，innative(优先使用相同物理机的服务),原则上找距离最近的服务。
 	* 配置方式：统一注册表；本地配置；动态下发。
 
 ## 分布式一致
@@ -2055,7 +2065,6 @@ TODO
 * [《什么是Service Mesh？》](https://time.geekbang.org/article/2355)
 * [《初识 Service Mesh》](https://www.jianshu.com/p/e23e3e74538e)
 
-* [《什么是Service Mesh？》](https://time.geekbang.org/article/2355)
 
 # 项目管理
 
@@ -2151,8 +2160,31 @@ TODO
 
 # 政策、法规
 
-TODO
 ## 法律
+
+* [《中华人民共和国网络安全法》](https://baike.baidu.com/item/%E4%B8%AD%E5%8D%8E%E4%BA%BA%E6%B0%91%E5%85%B1%E5%92%8C%E5%9B%BD%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%E6%B3%95/16843044)
+  * 2016年11月7日发布，自2017年6月1日起施行
+
+* [《个人信息保护法》](https://baike.baidu.com/item/个人信息保护法/8343360)
+  * 个人信息保护法是一部保护个人信息的法律条款，现尚在制订中，2019全国两会信息安全相关提案中，有政协委员呼吁关注大数据时代隐私保护，加速立法。
+
+* [《最高人民法院、最高人民检察院关于办理侵犯公民个人信息刑事案件适用法律若干问题的解释》](https://baike.baidu.com/item/最高人民法院、最高人民检察院关于办理侵犯公民个人信息刑事案件适用法律若干问题的解释/20497481)
+  * 《解释》共十三条，自2017年6月1日起施行
+  > * 1、对于行踪轨迹信息、通信内容、征信信息、财产信息，非法获取、出售或者提供50条以上即算“情节严重”；
+  > * 2、对于住宿信息、通信记录、健康生理信息、交易信息等其他可能影响人身、财产安全的公民个人信息，标准则是 500条以上；
+  > * 3、对于其他公民个人信息，标准为 5000条以上。
+
+* [《中华人民共和国电子商务法》](https://baike.baidu.com/item/中华人民共和国电子商务法/16467544)
+  * 2018年8月31日，十三届全国人大常委会第五次会议表决通过《电子商务法》，自2019年1月1日起施行
+  * [解读电子商务法（一）什么是电商](https://v.youku.com/v_show/id_XNDAzNjAyNDM0MA==.html)
+  * [解读电子商务法（二）电商经营者](https://v.youku.com/v_show/id_XNDA1OTc0OTQ5Mg==.html)
+  * [解读电子商务法（三）电商行为规范](https://v.youku.com/v_show/id_XNDA4NzIyNjI4MA==.html)
+  * [解读电子商务法（四）电商的法律关系](https://v.qq.com/x/page/e08443fc1cr.html)
+  * [解读电子商务法（外传）电商挣钱的秘密](https://v.youku.com/v_show/id_XNDA4MTQ2Nzk4NA==.html)
+  * [解读电子商务法（外传）电商模式](https://v.qq.com/x/page/j0844twjwr5.html)
+
+* [程序员需要知道的法律常识](https://blog.csdn.net/a331685690/article/details/79917772)
+* [白话法律42讲-为程序员打造的专属法律武器](https://time.geekbang.org/column/132)
 
 ### 严格遵守刑法253法条
 
@@ -2166,6 +2198,9 @@ TODO
 
 * [《非法获取公民个人信息罪》](https://baike.baidu.com/item/%E9%9D%9E%E6%B3%95%E8%8E%B7%E5%8F%96%E5%85%AC%E6%B0%91%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF%E7%BD%AA)
 
+### 避风港原则
+“避风港”原则是指在发生著作权侵权案件时，当ISP（网络服务提供商）只提供空间服务，并不制作网页内容，如果ISP被告知侵权，则有删除的义务，否则就被视为侵权。如果侵权内容既不在ISP的服务器上存储，又没有被告知哪些内容应该删除，则ISP不承担侵权责任。 后来避风港原则也被应用在搜索引擎、网络存储、在线图书馆等方面。
+* [《避风港原则》](https://baike.baidu.com/item/%E9%81%BF%E9%A3%8E%E6%B8%AF%E5%8E%9F%E5%88%99/588459?fr=aladdin)
 
 # 架构师素质
 
@@ -2233,9 +2268,10 @@ TODO
 * [ITeye](http://www.iteye.com/)
 	* 偏 Java 方向 
 * [博客园](https://www.cnblogs.com)
-* [ChinaUnix](http://www.tom.net/)
+* [ChinaUnix](http://www.chinaunix.net/)
 	* 偏 Linux 方向 
 * [开源中国社区](https://www.oschina.net/)
+* [InfoQ](https://www.infoq.cn/)
 * [深度开源](http://www.open-open.com/)
 * [伯乐在线](http://www.jobbole.com/)
 	* 涵盖 IT职场、Web前端、后端、移动端、数据库等方面内容，偏技术端。
@@ -2322,6 +2358,8 @@ TODO
 * [《架构师之路》](https://www.w3cschool.cn/architectroad/)
 
 ### 纸质书
+
+<b style="color:red">更多架构方面书籍参考:</b> [awesome-java-books](https://github.com/sorenduan/awesome-java-books/blob/master/README.md#%E6%9E%B6%E6%9E%84)
 
 #### 开发方面
 
@@ -2444,5 +2482,3 @@ TODO
 * [Linode](http://linode.com)
 * [DigitalOcean](https://www.digitalocean.com)
 * [Vultr](https://www.vultr.com/)
-
-
